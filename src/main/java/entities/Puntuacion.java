@@ -1,11 +1,23 @@
 package entities;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 
-public class Puntuacion {
+@Entity
+@Table(name = "puntuciaon")
+public class Puntuacion extends EntidadPersistente {
+    @ManyToOne
+    @JoinColumn(name = "aporte_id", referencedColumnName = "id")
     private Aporte aporte;
+
+    @ManyToOne
+    @JoinColumn(name = "usuario_id", referencedColumnName = "id")
     private Usuario usuario;
+
+    @Column(name = "puntos")
     private int puntos;
+
+    @Column(name = "fecha")
     private LocalDate fecha;
 
     public Puntuacion(int puntos, Usuario usuario){

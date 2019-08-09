@@ -1,15 +1,31 @@
 package entities;
 
+import javax.persistence.*;
 import java.util.ArrayList;
-import java.util.stream.Collectors;
+import java.util.List;
 
-public class Aporte {
+@Entity
+@Table(name = "aporte")
+public class Aporte extends EntidadPersistente {
+    @ManyToOne
+    @JoinColumn(name = "usuario_id", referencedColumnName = "id")
     private Usuario usuario;
+
+    @ManyToOne
+    @JoinColumn(name = "topico_id", referencedColumnName = "id")
     private Topico topico;
+
+    @Column(name = "nombre")
     private String nombre;
+
+    @Column(name = "descripcion")
     private String descripcion;
-    private ArrayList<Puntuacion> puntuaciones;
-    private ArrayList<Archivo> archivos;
+
+    @OneToMany(mappedBy = "aporte", cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
+    private List<Puntuacion> puntuaciones;
+
+    @OneToMany(mappedBy = "aporte", cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
+    private List<Archivo> archivos;
 
     public Aporte(){
         this.puntuaciones = new ArrayList<>();

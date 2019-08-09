@@ -1,10 +1,17 @@
 package entities;
 
+import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.List;
 
-public class Rol {
+@Entity
+@Table(name = "rol")
+public class Rol extends EntidadPersistente {
+    @Column(name = "nombre")
     private String nombre;
-    private ArrayList<Permiso> permisos;
+
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Permiso> permisos;
 
     public Rol(){
         this.permisos = new ArrayList<>();

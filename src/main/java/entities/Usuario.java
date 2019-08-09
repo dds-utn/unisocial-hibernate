@@ -1,16 +1,34 @@
 package entities;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
-public class Usuario {
+@Entity
+@Table(name = "usuario")
+public class Usuario extends EntidadPersistente {
+    @Column(name = "nombre")
     private String nombre;
+
+    @Column(name = "apellido")
     private String apellido;
+
+    @Column(name = "fechaDeNacimiento", columnDefinition = "DATE")
     private LocalDate fechaDeNacimiento;
+
+    @Column(name = "telefono")
     private int telefono;
+
+    @Column(name = "legajo")
     private int legajo;
+
+    @OneToOne(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "reputacion_id")
     private Reputacion reputacion;
-    private ArrayList<Aporte> aportes;
+
+    @OneToMany(mappedBy = "usuario", cascade = {CascadeType.ALL})
+    private List<Aporte> aportes;
 
     public Usuario(){
         this.aportes = new ArrayList<>();
@@ -65,7 +83,7 @@ public class Usuario {
         this.reputacion = reputacion;
     }
 
-    public ArrayList<Aporte> getAportes() {
+    public List<Aporte> getAportes() {
         return aportes;
     }
 

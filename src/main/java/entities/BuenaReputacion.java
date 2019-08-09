@@ -1,18 +1,23 @@
 package entities;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
 import java.util.ArrayList;
+import java.util.List;
 
+@Entity
+@DiscriminatorValue("buena")
 public class BuenaReputacion extends Reputacion {
 
     @Override
     public void recibirPuntuacionDeAporte(Puntuacion puntuacion, Usuario usuario){
-        ArrayList<Aporte> aportes = usuario.getAportes();
+        List<Aporte> aportes = usuario.getAportes();
         int sumaPuntuaciones = sumaPuntuaciones(aportes);
         int cantidadAportes = aportes.size();
         verificarBuenaReputacion(sumaPuntuaciones, cantidadAportes, usuario);
     }
 
-    private int sumaPuntuaciones(ArrayList<Aporte> aportes){
+    private int sumaPuntuaciones(List<Aporte> aportes){
         return aportes.stream().mapToInt(a -> a.sumatoriaDePuntuaciones()).sum();
     }
 

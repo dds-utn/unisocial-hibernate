@@ -1,7 +1,16 @@
 package entities;
 
-public class Permiso {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "permiso")
+public class Permiso extends EntidadPersistente {
+    @Column(name = "nombre")
     private String nombre;
+
+    @Column(name = "descripcion")
     private String descripcion;
 
     public String getNombre() {

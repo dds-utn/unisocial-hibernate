@@ -1,8 +1,19 @@
 package entities;
 
-public class Archivo {
+import javax.persistence.*;
+
+@Entity
+@Table(name = "archivo")
+public class Archivo extends EntidadPersistente {
+    @Column(name = "nombre")
     private String nombre;
+
+    @Column(name = "ruta")
     private String ruta;
+
+    @ManyToOne
+    @JoinColumn(name = "aporte_id", referencedColumnName = "id")
+    private Aporte aporte;
 
     public String getNombre() {
         return nombre;
