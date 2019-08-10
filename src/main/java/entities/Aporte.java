@@ -1,15 +1,15 @@
 package entities;
 
 import java.util.ArrayList;
-import java.util.stream.Collectors;
+import java.util.List;
 
 public class Aporte {
     private Usuario usuario;
     private Topico topico;
     private String nombre;
     private String descripcion;
-    private ArrayList<Puntuacion> puntuaciones;
-    private ArrayList<Archivo> archivos;
+    private List<Puntuacion> puntuaciones;
+    private List<Archivo> archivos;
 
     public Aporte(){
         this.puntuaciones = new ArrayList<>();

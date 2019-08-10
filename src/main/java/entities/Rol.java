@@ -1,10 +1,11 @@
 package entities;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Rol {
     private String nombre;
-    private ArrayList<Permiso> permisos;
+    private List<Permiso> permisos;
 
     public Rol(){
         this.permisos = new ArrayList<>();

@@ -2,6 +2,7 @@ package entities;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Usuario {
     private String nombre;
@@ -10,7 +11,7 @@ public class Usuario {
     private int telefono;
     private int legajo;
     private Reputacion reputacion;
-    private ArrayList<Aporte> aportes;
+    private List<Aporte> aportes;
 
     public Usuario(){
         this.aportes = new ArrayList<>();
@@ -65,7 +66,7 @@ public class Usuario {
         this.reputacion = reputacion;
     }
 
-    public ArrayList<Aporte> getAportes() {
+    public List<Aporte> getAportes() {
         return aportes;
     }
 
