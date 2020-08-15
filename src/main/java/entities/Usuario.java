@@ -30,9 +30,20 @@ public class Usuario extends EntidadPersistente {
     @OneToMany(mappedBy = "usuario", cascade = {CascadeType.ALL})
     private List<Aporte> aportes;
 
+    @ManyToOne
+    private Rol rol;
+
     public Usuario(){
         this.aportes = new ArrayList<>();
         this.reputacion = new BuenaReputacion();
+    }
+
+    public void setRol(Rol rol) {
+        this.rol = rol;
+    }
+
+    public Rol getRol() {
+        return rol;
     }
 
     public String getNombre() {
