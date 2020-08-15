@@ -12,10 +12,19 @@ public class Usuario {
     private int legajo;
     private Reputacion reputacion;
     private List<Aporte> aportes;
+    private Rol rol;
 
     public Usuario(){
         this.aportes = new ArrayList<>();
         this.reputacion = new BuenaReputacion();
+    }
+
+    public void setRol(Rol rol) {
+        this.rol = rol;
+    }
+
+    public Rol getRol() {
+        return rol;
     }
 
     public String getNombre() {
